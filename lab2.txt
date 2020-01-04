@@ -1,0 +1,64 @@
+NAME:SHANTANU MISHRA
+STUDENT NO.:1125597
+NSID:SHM572
+[shan@DESKTOP-I74H17G ~]$ mkdir 214bin 214lab2                                                                                                                                                                                  
+[shan@DESKTOP-I74H17G ~]$ mv ~/Downloads/ls ~/214bin/                                                                                                                                                                           
+[shan@DESKTOP-I74H17G ~]$ chmod u+x ~/214bin/ls                                                                                                                                                                                 
+[shan@DESKTOP-I74H17G ~]$ cd 214lab2/                                                                                                                                                                                           
+[shan@DESKTOP-I74H17G 214lab2]$ ls $HOME                                                                                                                                                                                        
+ 214bin                    IMG_20170329_165704.jpg   Pictures                                                                                                                                                                   
+ 214lab2                   IMG-20171118-WA0001.jpg   Public                                                                                                                                                                     
+ assigment_1.txt           IMG-20171118-WA0002.jpg   shan.pdf                                                                                                                                                                   
+ Desktop                   IMG-20171118-WA0003.jpg   Templates                                                                                                                                                                  
+ display.tcshrc            IMG_20180610_134754.jpg   typescript                                                                                                                                                                 
+ Documents                 IMG_20180610_135742.jpg  'Untitled 1.odg'                                                                                                                                                            
+ Downloads                 IMG_20180610_135744.jpg   USASK                                                                                                                                                                      
+ editort.txt               IMG_20180618_185519.jpg   usask                                                                                                                                                                      
+ fail                      man                       usask2                                                                                                                                                                     
+ IMG_0233.JPG              Music                     Videos                                                                                                                                                                     
+ IMG_20170328_172654.jpg   mycmd                                                                                                                                                                                                
+[shan@DESKTOP-I74H17G 214lab2]$ PATH= ~/214bin:$PATH                                                                                                                                                                            
+bash: /home/shan/214bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/u                                                                                                                                                sr/bin:/usr/sbin:/home/shan/.local/bin:/home/shan/bin:                                                                                                                                               
+[shan@DESKTOP-I74H17G 214lab2]$ which ls $HOME                                                                                                                                                                                  
+alias ls='ls --color=auto'                                                                                                                                                                                                      
+        /usr/bin/ls                                                                                                                                                                                                             
+/usr/bin/which: no shan in (/home)                                                                                                                                                                                              
+[shan@DESKTOP-I74H17G 214lab2]$ ls -l ~/214bin                                                                                                                                                                                  
+total 4                                                                                                     
+-rwxrw-r--. 1 shan shan 48 Sep 23 14:08 ls
+[shan@DESKTOP-I74H17G ~]$ tcsh
+Unmatched '"'.
+[shan@DESKTOP-I74H17G ~]$ echo $0
+tcsh
+[shan@DESKTOP-I74H17G ~]$ exit
+[shan@DESKTOP-I74H17G ~]$ echo $0
+bash
+[shan@DESKTOP-I74H17G ~]$ vim display
+[shan@DESKTOP-I74H17G ~]$ ./display
+You are performing the
+commands in tcshrc
+[shan@DESKTOP-I74H17G ~]$ vim .tcshrc
+[shan@DESKTOP-I74H17G ~]$ cat .tcshrc
+echo "ou are performing the
+commands in tcshrc"
+end
+[shan@DESKTOP-I74H17G ~]$ tcsh
+Unmatched '"'.
+[shan@DESKTOP-I74H17G ~]$ exit
+[shan@DESKTOP-I74H17G ~]$ rm .tcshrc
+[shan@DESKTOP-I74H17G ~]$ man -k editor > editor.txt
+[shan@DESKTOP-I74H17G ~]$ set -o noclobber
+[shan@DESKTOP-I74H17G ~]$ man -k editor > editor.txt
+bash: editor.txt: cannot overwrite existing file
+[shan@DESKTOP-I74H17G ~]$ bash --version
+GNU bash, version 4.4.19(1)-release (x86_64-redhat-linux-gnu)
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[shan@DESKTOP-I74H17G ~]$ 
+
+
+
+
