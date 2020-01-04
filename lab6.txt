@@ -1,0 +1,139 @@
+STUDENT NAME : SHANTANU MISHRA	
+STUDENT NO.  : 11255997		
+STUDENT NSID : SHM572
+
+QUESTION 1. (i)
+	***Command***
+		shm572@tux6:~> hostname
+	***Output***
+		tux6
+QUESTION 1. (ii)
+	***Command***
+		shm572@tux6:~> egrep  'System|system|root'  /etc/passwd | grep -v "/var"
+	***Output***
+		root:x:0:0:root:/root:/bin/bash
+		operator:x:11:0:operator:/root:/sbin/nologin
+		systemd-coredump:x:999:996:systemd Core Dumper:/:/sbin/nologin
+		systemd-network:x:192:192:systemd clNetwork Management:/:/sbin/nologin
+		systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+		dbus:x:81:81:System message bus:/:/sbin/nologin 
+
+QUESTION 2. (i)
+	***Command***
+		shm572@tux6:~> egrep '\<(\w+)(\W+)\1\>'  ~/Downloads/sentences.txt
+	***Output***
+		This is a sentence sentence.
+		This is a a another sentence.
+		this this is a sentence.
+		Another matching matching example.
+		How many   many examples do we need?
+
+QUESTION 2. (ii)
+	***Command***
+		shm572@tux6:~> egrep -v '\<(\w+)(\W+)\1\>'  ~/Downloads/sentences.txt
+	***Output***
+		This is a good sentence.
+		This is a really good sentence.
+		This sentencesentence does not match.
+		This this is a sentence.
+		This example does not match.
+
+QUESTION 3. 
+	***Command***
+		shm572@tux6:~> grep -r  EXIT_SUCCESS /usr/include/*.h
+	***Output***
+		/usr/include/stdlib.h:#define   EXIT_SUCCESS    0       /* Successful exit status.  */
+
+QUESTION 4. (A)
+ANSWER : i) 123 
+            1x8^2+7x8^1+3x8^0
+	    1x64+7x8+3x1
+	    64+56+3 = 123
+	ii) 7B
+	    1(octal) = 001(decimal)
+      	    7(octal) = 111(decimal)
+            3(octal) = 011(decimal)
+            => 0111(decimal)= 7 (hexa)
+               1011(decimal)= B (hexa)
+            =>7B
+   
+
+QUESTION 4. (B)
+ANSWER : i) 255
+	    173/8= 21, r=5;
+	     21/8= 2 , r=5;
+              2/8= 0 , r=2; 
+	ii) AD
+ 	    173/16=10 , r=13;
+	     10/16=0  , r=10;
+                10= A, 13=D => AD
+            
+
+QUESTION 4. (C)
+ANSWER : i) 563
+            1=0001 
+	    7=0111
+	    3=0011
+	    173 = 101110011 
+           => 101 110 011
+               5   6   3
+	ii) 371
+            1x16^2+7x16^1+3x16^0
+	    1x256+7x16+3x1
+            256+112+3 = 371
+
+QUESTION 5. (A) 
+	***Command***(diff(1) between the q5.c and q5_float.c )
+		shm572@tux6:~/Downloads> diff q5.c q5_float.c
+	***Output***
+		12c12
+		<   printf("%f %f %d\n", d, f, i);
+		---
+		>   printf("%0.4f %0.4f %d\n", d, f, i);
+	***Command*** (q5_float.c compliation & execution ) 
+		shm572@tux6:~/Downloads> gcc -Wall -Wextra q5_float.c
+		shm572@tux6:~/Downloads> ./a.out 
+	***Output***
+		10.4567 11.6789 13
+
+QUESTION 5. (B) 
+	***Command***(diff(1) between the q5.c and q5_int.c )
+ 		shm572@tux6:~/Downloads> diff q5.c q5_int.c
+	***Output***
+		12c12
+		<   printf("%f %f %d\n", d, f, i);
+		---
+		>   printf("%.0f %.0f %d\n", d, f, i);
+	***Command*** (q5_int.c compliation & execution ) 
+		shm572@tux6:~/Downloads> gcc -Wall -Wextra q5_int.c
+		shm572@tux6:~/Downloads> ./a.out 
+	***Output***
+		10 12 13
+
+QUESTION 5. (C) 
+	***Command***(diff(1) between the q5.c and q5_hex.c )
+		shm572@tux6:~/Downloads> diff q5.c q5_hex.c  
+	***Output***
+		12c12
+		<   printf("%f %f %d\n", d, f, i);
+		---
+		>   printf("%f %f %#x\n", d, f, i);
+	***Command*** (q5_hex.c compliation & execution ) 
+		shm572@tux6:~/Downloads> gcc -Wall -Wextra q5_hex.c
+		shm572@tux6:~/Downloads> ./a.out 
+	***Output***
+		10.456712 11.678900 0xd
+
+QUESTION 5. (D) 
+	***Command***(diff(1) between the q5.c and q5_cast.c )
+		shm572@tux6:~/Downloads> diff q5.c q5_cast.c 
+	***Output***
+		12c12
+		<   printf("%f %f %d\n", d, f, i);
+		---
+		>   printf("%f %f %f\n", d, f,(float)i);
+	***Command*** (q5_cast.c compliation & execution ) 
+		shm572@tux6:~/Downloads> gcc -Wall -Wextra q5_cast.c
+		shm572@tux6:~/Downloads> ./a.out 
+	***Output***
+		10.456712 11.678900 13.000000

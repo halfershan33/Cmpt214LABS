@@ -1,0 +1,166 @@
+STUDENT NAME : SHANTANU MISHRA	
+STUDENT NO.  : 11255997		
+STUDENT NSID : SHM572	
+Question 1:a)
+	***Code***
+		shm572@tux5:~> pr -tn ~/Downloads/q1.c
+	***Output***	   
+		    1	/*
+		    2	  program for Question 1 of Lab 07
+		    3	 */
+		    4	
+		    5	#include <stdio.h>
+		    6	
+		    7	int i = 0;
+		    8	
+		    9	void function( int i ) {
+		   10	    i = 3;                    // A //                   
+		   11	}
+		   12	
+		   13	int main() {
+		   14	    int sum;
+		   15	
+		   16	    for ( int i=0; i<7; ++i ) 
+		   17	    {
+		   18	        sum += i;               // B //
+		   19	    }
+		   20	    printf("%d\n", i);          // C //
+		   21	    function(i);
+		   22	    printf("%d\n", i);
+		   23	}
+Question 1:b)
+ 		
+      line     Line_Label   Variable   Definition/Declaration_Line
+       10         A	       i               i=3
+       18         B          sum , i          sum +=i
+       20         C            i
+
+Question 2:a)
+      ***Code***
+               shm572@tux5:~> top -o %MEM
+      ***Output***
+		top - 18:44:28 up 48 days,  2:10, 18 users,  load average: 3.13, 3.13, 3.10
+		Tasks: 1300 total,   2 running, 1033 sleeping,  13 stopped,   0 zombie
+		%Cpu(s):  6.3 us,  0.0 sy,  0.0 ni, 93.4 id,  0.2 wa,  0.0 hi,  0.0 si,  0.0 st
+		KiB Mem : 13191906+total, 10674227+free,  8361936 used, 16814852 buff/cache
+		KiB Swap: 16777212 total,  9873608 free,  6903604 used. 12249417+avail Mem 
+
+		  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND     
+		22081 ttv026    20   0 11.025g 830144  37628 S   0.7  0.6   1:18.90 java        
+		45858 ccc602    20   0 8289020 373940  29772 S   0.0  0.3  18:56.36 gnome-shell 
+		42413 sdt747    20   0 8195552 277284  66764 S   0.0  0.2   1:34.30 gnome-shell 
+		42832 nic014    20   0 8042856 238248  30632 S   2.3  0.2  67:38.96 gnome-shell 
+		 1093 root      20   0  603000 214464 200960 S   0.0  0.2   8:51.35 systemd-jo+ 
+		27259 nic014    20   0 36.868g 191268  11892 S   0.0  0.1  10:16.88 java        
+		42376 twb431    20   0 7977136 168072  49416 S   0.0  0.1   1:21.74 gnome-shell 
+		26417 sdt747    20   0 36.804g 153572   9128 S   0.3  0.1  11:41.18 java        
+		11976 clb135    20   0 7898012 152400  28760 S   0.0  0.1   1:46.86 gnome-shell 
+		23618 twb431    20   0 36.784g 118092   9464 S   0.0  0.1  23:17.82 java        
+		46157 ccc602    20   0 1391132 103196  12672 S   0.0  0.1   1:47.27 gnome-soft+ 
+		 3833 clb135    20   0 36.868g 103112   8616 S   0.0  0.1  34:27.51 java        
+		46158 ccc602    20   0 36.804g 101844   8696 S   0.0  0.1  26:48.84 java        
+		26415 sdt747    20   0 1412424 100976  17252 S   0.0  0.1   0:55.45 gnome-soft+ 
+		 2662 gdm       20   0 8178912  90816  21316 S   0.0  0.1  20:35.55 gnome-shell 
+		27258 nic014    20   0 1410356  79904  15956 S   0.0  0.1   0:39.77 gnome-soft+ 
+		43985 root      20   0 3063956  69904  64116 S   0.0  0.1   2:58.32 rsyslogd   
+Question 2:b) 
+      ***Code***
+  	      shm572@tux5:~> top -c 
+      ***Output***
+top - 18:49:51 up 48 days,  2:16, 17 users,  load average: 4.56, 3.53, 3.24
+Tasks: 1286 total,   2 running, 1022 sleeping,  13 stopped,   0 zombie
+%Cpu(s):  6.4 us,  0.2 sy,  0.0 ni, 93.4 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 13191906+total, 10678444+free,  8321832 used, 16812788 buff/cache
+KiB Swap: 16777212 total,  9874376 free,  6902836 used. 12253436+avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                           
+41719 fbl773    20   0 1371784   3716   1156 S 100.3  0.0  37996:07 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -dr+ 
+ 8171 root      20   0 1191000   1476   1020 S  99.7  0.0  51797:07 /usr/libexec/packagekitd                                                          
+37597 yuw857    20   0 4546252   2272   2032 R  99.7  0.0  58043:19 /bin/plasmashell                                                                  
+ 8428 rjl921    20   0   99796  50172  26672 S   2.0  0.0   1156:29 .bin/consul agent -server -bootstrap-expect=3 -config-dir=/student/rjl921/fun/co+ 
+42832 nic014    20   0 8043880 238880  30632 S   2.0  0.2  67:45.55 /usr/bin/gnome-shell                                                              
+28643 shm572    20   0   53988   5352   3152 R   1.3  0.0   0:01.08 top -c                                                                            
+ 2948 gdm       20   0  959188  14632   1120 S   0.3  0.0 120:04.97 /usr/libexec/gsd-color                                                            
+17721 rjl921    20   0   84236  10580   7224 S   0.3  0.0  77:22.44 vault server -config=/student/rjl921/secrets/conf.d                               
+26125 nic014    20   0 1404172  11972   2408 S   0.3  0.0   4:08.83 Xvnc :12 -auth .Xauthority -geometry 1920x1080 -depth 24 -rfbauth /student/nic01+ 
+26417 sdt747    20   0 36.804g 153592   9128 S   0.3  0.1  11:41.35 /bin/java -classpath lib/BrowserLauncher2-1.3.jar:lib/animal-sniffer-annotations+ 
+    1 root      20   0  247056   8068   3976 S   0.0  0.0   5:01.28 /usr/lib/systemd/systemd --system --deserialize 43                                
+    2 root      20   0       0      0      0 S   0.0  0.0   0:03.58 [kthreadd]                                                                        
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [rcu_gp]                                                                          
+    5 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [kworker/0:0H]                                                                    
+    6 root      20   0       0      0      0 I   0.0  0.0   0:00.00 [kworker/u96:0]                                                                   
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [mm_percpu_wq]                                                                    
+    9 root      20   0       0      0      0 S   0.0  0.0   0:21.38 [ksoftirqd/0]                                                                     
+   10 root      20   0       0      0      0 I   0.0  0.0  24:26.75 [rcu_sched]                                                                       
+   11 root      20   0       0      0      0 I   0.0  0.0   0:00.00 [rcu_bh]                                                                          
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:00.83 [migration/0]                                                                     
+   13 root      rt   0       0      0      0 S   0.0  0.0   0:00.90 [watchdog/0]                                                                      
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 [cpuhp/0]                                                                         
+   15 root      20   0       0      0      0 S   0.0  0.0   0:00.00 [cpuhp/1]                                                                         
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:03.20 [watchdog/1]                                                                      
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:02.28 [migration/1]                                                                     
+   18 root      20   0       0      0      0 S   0.0  0.0   0:03.36 [ksoftirqd/1]                                                                     
+   20 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [kworker/1:0H]                                                                    
+   22 root      20   0       0      0      0 S   0.0  0.0   0:00.00 [cpuhp/2]                                                                         
+   23 root      rt   0       0      0      0 S   0.0  0.0   0:03.80 [watchdog/2]                                                                      
+   24 root      rt   0       0      0      0 S   0.0  0.0   0:00.67 [migration/2]   
+
+Question 3: 
+           0x476f204875736b6965732100 ==> Go Huskies!
+47:G
+6f:o
+20:SPACE 
+48:H
+75:u
+73:s
+6b:k
+69:i
+65:e
+73:s
+21:!
+00:'\0'
+
+Question 4:a)
+     ***Code***
+	shm572@tux5:~/Downloads> diff example_4.c example_4_modified.c 
+     ***Output***
+	17a18
+	>   printf("long int:   %zd bytes\n", sizeof(long));
+Question 4:b)
+     ***Code***
+	shm572@tux5:~/Downloads> gcc -Wall -Wextra example_4_modified.c 
+	shm572@tux5:~/Downloads> ./a.out                  
+     ***Output***	
+	char:     1 bytes
+	short:    2 bytes
+	int:      4 bytes
+	unsigned: 4 bytes
+	float:    4 bytes
+	double:   8 bytes
+	long int: 8 bytes
+	
+Question 5:
+     ***Code***
+	shm572@tux5:~/Downloads> diff q5.c q5_fixed.c        
+     ***Output***
+	11c11
+	<     char* mystr;                       // destination string
+	---
+	>     char  mystr[BUFSIZE];                    // destination string
+     ***Code***
+	shm572@tux5:~/Downloads> gcc -Wall -Wextra q5_fixed.c
+	shm572@tux5:~/Downloads> ./a.out
+     ***Output***
+	Hello, World!
+
+Question 6:
+    
+	a) 0x7ffedd1bc378
+	b) 0x7ffedd1bc37c
+	c) 0x7ffedd1bc380
+	d) 0x7ffedd1bc380
+	e) 8
+
+
+
+		       

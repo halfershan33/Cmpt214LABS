@@ -1,0 +1,324 @@
+STUDENT NAME: SHANTANU MISHRA
+STUDENT NSID: SHM572
+STUDENT No. : 11255997
+
+Question. 1 
+	***CODE***
+		shm572@tux7:~> printenv | grep  BLOCK 
+		shm572@tux7:~> env BLOCK_SIZE=1M du -s /usr/local/bin
+	***OUTPUT***		
+		229	/usr/local/bin
+	***CODE***
+		shm572@tux7:~> env BLOCK_SIZE=1M du -s -m  /usr/local/bin
+	***OUTPUT*** 		
+		229	/usr/local/bin
+	***CODE***	
+		shm572@tux7:~> printenv | grep  BLOCK 
+Question. 2 
+	***CODE***
+		shm572@tux7:~> ulimit -a
+	***OUTPUT***	
+		core file size          (blocks, -c) unlimited
+		data seg size           (kbytes, -d) unlimited
+		scheduling priority             (-e) 0
+		file size               (blocks, -f) unlimited
+		pending signals                 (-i) 514325
+		max locked memory       (kbytes, -l) 16384
+		max memory size         (kbytes, -m) unlimited
+		open files                      (-n) 1024
+		pipe size            (512 bytes, -p) 8
+		POSIX message queues     (bytes, -q) 819200
+		real-time priority              (-r) 0
+		stack size              (kbytes, -s) 8192
+		cpu time               (seconds, -t) unlimited
+		max user processes              (-u) 514325
+		virtual memory          (kbytes, -v) unlimited
+		file locks                      (-x) unlimited
+	
+Question. 3 a)
+	***CODE***
+		shm572@tux7:~/Lab12Files> make
+	***OUTPUT***		
+		cc -Wall -Wextra    power.c   -o power
+	***CODE***		
+		shm572@tux7:~/Lab12Files> ./power infile.txt 
+	***OUTPUT***		
+		4 to the power of 5 is 1440
+		Segmentation fault (core dumped)
+	***CODE***	
+		shm572@tux7:~/Lab12Files> ls 
+	***OUTPUT***
+		core.20428  infile.txt	makefile  power*  power.c
+	
+Question. 3 b)
+	***CODE***	
+		shm572@tux7:~/Lab12Files> cp makefile makefile_org
+		shm572@tux7:~/Lab12Files> vim makefile
+	***CODE***
+		shm572@tux7:~/Lab12Files> diff makefile makefile_org 
+	***OUTPUT***	
+		4c4
+		< CFLAGS = -Wall -Wextra -g 
+		---
+		> CFLAGS = -Wall -Wextra
+	***CODE*** 	
+		shm572@tux7:~/Lab12Files> make -W makefile
+	***OUTPUT***
+		mcc -Wall -Wextra -g     power.c   -o power
+	
+Question. 3 c)
+	***CODE***
+		shm572@tux7:~/Lab12Files> gdb ./power
+	***OUTPUT***	
+		GNU gdb (GDB) Fedora 8.1.1-3.fc28
+		Copyright (C) 2018 Free Software Foundation, Inc.
+		License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+		This is free software: you are free to change and redistribute it.
+		There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+		and "show warranty" for details.
+		This GDB was configured as "x86_64-redhat-linux-gnu".
+		Type "show configuration" for configuration details.
+		For bug reporting instructions, please see:
+		<http://www.gnu.org/software/gdb/bugs/>.
+		Find the GDB manual and other documentation resources online at:
+		<http://www.gnu.org/software/gdb/documentation/>.
+		For help, type "help".
+		Type "apropos word" to search for commands related to "word"...
+		Reading symbols from ./power...done.
+		(gdb) run infile.txt
+		Starting program: /student/shm572/Lab12Files/power infile.txt
+		4 to the power of 5 is 1440
+
+		Program received signal SIGSEGV, Segmentation fault.
+		0x00000000004006e0 in swap (a=0x7fffffffd5d0, b=0x7fffffffd5cc) at power.c:32
+		32		*tmp = *a;
+		(gdb) backtrace full
+		#0  0x00000000004006e0 in swap (a=0x7fffffffd5d0, b=0x7fffffffd5cc) at power.c:32
+			tmp = 0x0
+		#1  0x0000000000400668 in main (argc=2, argv=0x7fffffffd6c8) at power.c:21
+			number = 4
+			power = 5
+			result = 1440
+			in_stream = 0x602260
+Question. 3 d)
+	
+		(gdb) list power.c:32
+		27	}
+		28	
+		29	void swap(int *a, int *b) {
+		30		int *tmp=NULL;
+		31	
+		32		*tmp = *a;
+		33		*a = *b;
+		34		*b = *tmp;
+		35	}
+		36	
+		(gdb) frame 0
+		#0  0x00000000004006e0 in swap (a=0x7fffffffd5d0, b=0x7fffffffd5cc) at power.c:32
+		32		*tmp = *a;
+		(gdb) p *a
+		$1 = 4
+		(gdb) p *b
+		$2 = 5
+		(gdb) p a 
+		$3 = (int *) 0x7fffffffd5d0
+		(gdb) p b
+		$4 = (int *) 0x7fffffffd5cc
+		(gdb) p *tmp
+		Cannot access memory at address 0x0
+		(gdb) ptype *tmp
+		type = int
+		(gdb) ptype tmp
+		type = int *
+		(gdb) quit
+		A debugging session is active.
+
+			Inferior 1 [process 27396] will be killed.
+
+		Quit anyway? (y or n) y
+
+	
+Question. 3 e)
+	***CODE***
+		shm572@tux7:~/Lab12Files> cp power.c power_org.c
+		shm572@tux7:~/Lab12Files> vim power.c 
+		shm572@tux7:~/Lab12Files> diff power.c power_org.c 
+	***OUTPUT***		
+		30,32c30
+		< 	int tmp=0;
+		< 	
+		< 	
+		---
+		> 	int *tmp=NULL;
+		34c32
+		< 	tmp = *a;
+		---
+		> 	*tmp = *a;
+		36c34
+		< 	*b = tmp;
+		---
+		> 	*b = *tmp;
+	***CODE***	
+		shm572@tux7:~/Lab12Files> ./power infile.txt 
+	***OUTPUT***	
+		4 to the power of 5 is 1440
+		5 to the power of 4 is 2880
+		6 to the power of 2 is 60
+		2 to the power of 6 is 12
+		3 to the power of 7 is 252
+		7 to the power of 3 is 1260
+		1 to the power of 7 is 1
+		7 to the power of 1 is 7
+		2 to the power of 3 is 6
+		3 to the power of 2 is 12
+		0 to the power of 0 is 1
+		0 to the power of 0 is 1
+		0 to the power of 2 is 0
+		2 to the power of 0 is 1
+		2 to the power of 0 is 1
+		0 to the power of 2 is 0
+Question. 3 f)
+	***CODE***
+		shm572@tux7:~/Lab12Files> gdb power
+		GNU gdb (GDB) Fedora 8.1.1-3.fc28
+		Copyright (C) 2018 Free Software Foundation, Inc.
+		License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+		This is free software: you are free to change and redistribute it.
+		There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+		and "show warranty" for details.
+		This GDB was configured as "x86_64-redhat-linux-gnu".
+		Type "show configuration" for configuration details.
+		For bug reporting instructions, please see:
+		<http://www.gnu.org/software/gdb/bugs/>.
+		Find the GDB manual and other documentation resources online at:
+		<http://www.gnu.org/software/gdb/documentation/>.
+		For help, type "help".
+		Type "apropos word" to search for commands related to "word"...
+		Reading symbols from power...done.
+		(gdb) break calc_pow 
+		Breakpoint 1 at 0x400704: file power.c, line 40.
+		(gdb) run infile.txt
+		Starting program: /student/shm572/Lab12Files/power infile.txt
+
+		Breakpoint 1, calc_pow (num=4, pow=5) at power.c:40
+		40		if ( pow == 0 ) {
+		(gdb) p num
+		$1 = 4
+		(gdb) p pow
+		$2 = 5
+		(gdb) next
+		44			return num * calc_pow( pow, num-1 );
+		(gdb) p num
+		$3 = 4
+		(gdb) p pow
+		$4 = 5
+		(gdb) next
+
+		Breakpoint 1, calc_pow (num=5, pow=3) at power.c:40
+		40		if ( pow == 0 ) {
+		(gdb) p num
+		$5 = 5
+		(gdb) p pow
+		$6 = 3
+		(gdb) next
+		44			return num * calc_pow( pow, num-1 );
+		(gdb) p num
+		$7 = 5
+		(gdb) p pow
+		$8 = 3
+		(gdb) next
+
+		Breakpoint 1, calc_pow (num=3, pow=4) at power.c:40
+		40		if ( pow == 0 ) {
+		(gdb) p num
+		$9 = 3
+		(gdb) p pow
+		$10 = 4
+		(gdb) 
+Question. 3 g)
+	***CODE***			
+		shm572@tux7:~/Lab12Files> cp power.c power_copy.c
+		shm572@tux7:~/Lab12Files> vim power.c
+		shm572@tux7:~/Lab12Files> make
+	***OUTPUT***		
+		cc -Wall -Wextra -g     power.c   -o power
+	***CODE***	
+		shm572@tux7:~/Lab12Files> diff power.c power_copy.c 
+	***OUTPUT***	
+		44c44
+		< 		return num * calc_pow( num, pow-1 );
+		---
+		> 		return num * calc_pow( pow, num-1 );
+	***CODE***		
+		shm572@tux7:~/Lab12Files>
+		shm572@tux7:~/Lab12Files> !./pow
+	***OUTPUT***	
+		./power infile.txt 
+		4 to the power of 5 is 1024
+		5 to the power of 4 is 625
+		6 to the power of 2 is 36
+		2 to the power of 6 is 64
+		3 to the power of 7 is 2187
+		7 to the power of 3 is 343
+		1 to the power of 7 is 1
+		7 to the power of 1 is 7
+		2 to the power of 3 is 8
+		3 to the power of 2 is 9
+		0 to the power of 0 is 1
+		0 to the power of 0 is 1
+		0 to the power of 2 is 0
+		2 to the power of 0 is 1
+		2 to the power of 0 is 1
+		0 to the power of 2 is 0
+Question. 3 g)
+	***CODE***
+		shm572@tux7:~/Lab12Files> gdb power
+	***OUTPUT***	
+		GNU gdb (GDB) Fedora 8.1.1-3.fc28
+		Copyright (C) 2018 Free Software Foundation, Inc.
+		License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+		This is free software: you are free to change and redistribute it.
+		There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+		and "show warranty" for details.
+		This GDB was configured as "x86_64-redhat-linux-gnu".
+		Type "show configuration" for configuration details.
+		For bug reporting instructions, please see:
+		<http://www.gnu.org/software/gdb/bugs/>.
+		Find the GDB manual and other documentation resources online at:
+		<http://www.gnu.org/software/gdb/documentation/>.
+		For help, type "help".
+		Type "apropos word" to search for commands related to "word"...
+		Reading symbols from power...done.
+		(gdb) list powe.c:18,24
+		No source file named powe.c.
+		(gdb) list power.c:18,24
+		18		while (fscanf(in_stream, "%d %d", &number, &power) != EOF) {
+		19			result = calc_pow(number, power);
+		20			printf("%d to the power of %d is %d\n", number, power, result);
+		21			swap(&number, &power);
+		22			result = calc_pow(number, power);
+		23			printf("%d to the power of %d is %d\n", number, power, result);
+		24		}
+		
+Question. 3 h)
+	***CODE***
+		(gdb) break calc_pow 
+		Breakpoint 1 at 0x400704: file power.c, line 40.
+		(gdb) run < infile.txt 
+		Starting program: /student/shm572/Lab12Files/power < infile.txt
+
+		Breakpoint 1, calc_pow (num=4, pow=5) at power.c:40
+		40		if ( pow == 0 ) {
+Question. 3 i)
+	***CODE***
+		(gdb) c
+		Continuing.
+
+		Breakpoint 1, calc_pow (num=4, pow=4) at power.c:40
+		40		if ( pow == 0 ) {
+		
+
+Question. 3 j)
+	***CODE***
+ 		(gdb) quit 
+

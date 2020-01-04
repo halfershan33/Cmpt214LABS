@@ -1,0 +1,290 @@
+STUDENT NAME: SHANTANU MISHRA
+STUDENT NSID: SHM572
+STUDENT No. : 11255997
+
+Question. 1 (A) 
+
+***Command***
+shm572@tux6:~> grep ^[IO].*[a-z].*box$ Downloads/mailinfo.txt
+
+***Output***
+Inbox
+Is a match box
+Outbox
+Open the magic box
+shm572@tux6:~> grep -v  ^[IO].*[a-z].*box$ Downloads/mailinfo.txt
+the Inbox
+Doesn't match
+INBOX
+Outbox1
+InbOX
+Ibox
+I box
+
+Question. 1 (B) 
+***Command***
+shm572@tux6:~> grep -c  ^[IO].*[a-z].*box$ Downloads/mailinfo.txt
+
+***Output***
+4
+
+Question. 2  
+***Command*** 
+shm572@tux6:~> cp /etc/passwd ~/passwd
+
+Question. 2(A)
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd 
+
+***Output***
+root
+bin
+daemon
+adm
+lp
+sync
+shutdown
+halt
+mail
+operator
+games
+ftp
+nobody
+apache
+systemd-coredump
+systemd-network
+systemd-resolve
+dbus
+polkitd
+geoclue
+colord
+rtkit
+pulse
+gluster
+qemu
+avahi
+dnsmasq
+usbmuxd
+rpc
+openvpn
+nm-openvpn
+radvd
+saslauth
+nm-openconnect
+pipewire
+abrt
+gdm
+rpcuser
+gnome-initial-setup
+chrony
+vboxadd
+sshd
+tcpdump
+local
+tss
+canna
+mysql
+sddm
+setroubleshoot
+unbound
+lightdm
+sstpc
+oprofile
+nagios
+munge
+epmd
+nrpe
+boinc
+nscd
+nslcd
+postfix
+akmods
+
+Question. 2(B)
+
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd | sort -r  
+
+***Output***     
+vboxadd
+usbmuxd
+unbound
+tss
+tcpdump
+systemd-resolve
+systemd-network
+systemd-coredump
+sync
+sstpc
+sshd
+shutdown
+setroubleshoot
+sddm
+saslauth
+rtkit
+rpcuser
+rpc
+root
+radvd
+qemu
+pulse
+postfix
+polkitd
+pipewire
+oprofile
+operator
+openvpn
+nslcd
+nscd
+nrpe
+nobody
+nm-openvpn
+nm-openconnect
+nagios
+mysql
+munge
+mail
+lp
+local
+lightdm
+halt
+gnome-initial-setup
+gluster
+geoclue
+gdm
+games
+ftp
+epmd
+dnsmasq
+dbus
+daemon
+colord
+chrony
+canna
+boinc
+bin
+avahi
+apache
+akmods
+adm
+abrt
+
+Question. 2(C)
+
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd | sort | tail -1
+
+***Output***
+vboxadd
+
+Question. 2(D)
+
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd | sort | tail -1 | cut -c1
+
+***Output***
+v
+
+Question. 2(E)
+
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd | sort | tail -1 | cut -c1 | tr '[:lower:]' '[:upper:]'
+
+***Output***
+V
+Question. 2(F)
+
+***Command***
+shm572@tux6:~> cut -d':' -f1 passwd | sort | tail -1 > max_username.txt | more max_username.txt
+
+***Output***
+::::::::::::::
+max_username.txt
+::::::::::::::
+vboxadd
+
+Question. 3(A)
+
+***Command***
+shm572@tux6:~> COLUMN1_HEADING=Name
+shm572@tux6:~> COLUMN2_HEADING="Student number"
+shm572@tux6:~> printf "%s %s %s\n %s %d\n" $COLUMN1_HEADING $COLUMN2_HEADING John 123456789 
+
+***Output***
+Name Student number
+John 123456789
+
+Question. 3(B)
+
+***Command***
+shm572@tux6:~> printf "%s%s%s \n" \$COLUMN1_HEADING\\t\$COLUMN2_HEADING\\nJohn\\t123456789\\n 
+
+***Output*** 
+$COLUMN1_HEADING\t$COLUMN2_HEADING\nJohn\t123456789\n
+
+Question. 4(A)
+
+***Command***
+shm572@tux8:~> gcc  ~/Downloads/q4.c
+shm572@tux8:~> ./a.out
+
+***Output***
+The one's complement of 34567 is 0xffff78f8 or 015171503430
+x = 10.370000
+
+Question. 4(B)
+
+***Command***
+shm572@tux8:~> gcc -Wall -Wextra ~/Downloads/q4.c
+
+***Output***
+/student/shm572/Downloads/q4.c: In function 'main':
+/student/shm572/Downloads/q4.c:13:51: warning: format '%o' expects a matching 'unsigned int' argument [-Wformat=]
+   printf( "The one's complement of %d is %#x or %#o\n", i, ci );
+
+Question. 4(c)
+
+***Command***                                                 ~~^
+shm572@tux8:~> gcc -Wall -Wextra ~/Downloads/q4_fixed.c  
+shm572@tux8:~> ./a.out
+
+***Output***
+The one's complement of 34567 is 0x8707 or 0103407
+x = 10.370000
+
+Question. 4(D)
+
+***Command***
+shm572@tux8:~> diff ~/Downloads/q4.c ~/Downloads/q4_fixed.c 
+
+***Output***
+13c13
+<   printf( "The one's complement of %d is %#x or %#o\n", i, ci );
+---
+>   printf( "The one's complement of %d is %#x or %#o\n", i, ci,ci );
+
+Question. 4(E)(i)
+
+***Command***
+shm572@tux8:~> gcc -Wall -Wextra  ~/Downloads/q4_modified.c
+shm572@tux8:~> ./a.out
+
+***Output***
+The one's complement of 34567 is 0xffff78f8 or 037777674370
+x = 10.37
+
+Question. 4(E)(ii)
+
+***Command***
+shm572@tux8:~> diff ~/Downloads/q4_fixed.c ~/Downloads/q4_modified.c
+
+***output***
+16c16
+<   printf( "x = %f\n", x );
+---
+>   printf( "x = %0.2f\n", x );
+shm572@tux8:~> 
+
+
+
+

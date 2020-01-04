@@ -1,0 +1,332 @@
+STUDENT NAME: SHANTANU MISHRA
+STUDENT NSID: SHM572
+STUDENT No. : 11255997
+
+Question. 1 
+
+	i)***Command*** 
+		shm572@tux8:~/lab11> cp q1_incomplete.c q1.c
+		shm572@tux8:~/lab11> vim q1.c
+		shm572@tux8:~/lab11> gcc -Wall -Wextra q1.c 
+		shm572@tux8:~/lab11> ./a.out
+	  ***Output***
+		a marigold is a flower
+		a standard tomato has 22 calories
+		don't cook your brocolli more than 2.50 minutes
+	
+	ii)***Command***
+		shm572@tux8:~/lab11> diff q1_incomplete.c q1.c
+	   ***Output***
+		17c17
+		< typedef enum /* replace this comment with the rest of the definition of grocery_t */
+		---
+		> typedef enum {flower,fruit,vegetable}grocery_t;
+		83c83
+		<             /* replace with the most appropriate, correct statement */
+		---
+		>             break;
+		86,88c86
+		<                      groceries[i].frt.name,
+		< /* replace with expression that is the calories member of the frt interpretation of groceries[i] */
+		<                   );
+		---
+		>                      groceries[i].frt.name,groceries[i].frt.calories);
+		92,94c90
+		<                      grocery_pt->veg.name, 
+		< /* replace with expression that is the cooking_time member of the veg interpretation of the union pointed to by groceries_pt */
+		<                   );
+		---
+		>                      grocery_pt->veg.name,grocery_pt->veg.cooking_time);
+
+
+Question. 2 (a)
+
+	  ***Command***
+		shm572@tux8:~/lab11> curl http://www.acme.com/software/factor/factor_02Jun2016.tar.gz>factor_02jun2016.tar.gz
+          ***Output*** 
+		 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+				                 Dload  Upload   Total   Spent    Left  Speed
+		100 28040  100 28040    0     0   172k      0 --:--:-- --:--:-- --:--:--  172k
+
+Question. 2 (b)
+
+	    ***Command***
+		shm572@tux8:~/lab11> tar -xvf factor_02jun2016.tar.gz   
+                shm572@tux7:~/lab11> cd factor/
+  
+	    ***Output***
+		factor/
+		factor/Makefile
+		factor/factor.1
+		factor/factor.c
+		factor/low_primes.h
+                shm572@tux7:~/lab11/factor>
+Question. 2 (c)
+
+	    ***Command***
+		shm572@tux7:~/lab11/factor> make -n 
+	    ***Output***
+	cc -O -ansi -pedantic -U__STRICT_ANSI__ -Wall -Wpointer-arith -Wshadow -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-	prototypes -Wmissing-declarations -Wredundant-decls -Wno-long-long factor.c -s -o factor
+	
+Question. 2 (d)
+
+	    ***Command***
+		shm572@tux7:~/lab11/factor> cp Makefile Makefile.org
+		shm572@tux7:~/lab11/factor> vim Makefile
+		shm572@tux7:~/lab11/factor> diff Makefile.org Makefile
+	   ***Output***
+		3c3
+		< LDFLAGS =	-s
+		---
+		> LDFLAGS =
+Question. 2 (e)
+
+	    ***Command***
+		shm572@tux7:~/lab11/factor> make
+	    ***Output***
+		cc -O -ansi -pedantic -U__STRICT_ANSI__ -Wall -Wpointer-arith -Wshadow -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-	prototypes -Wmissing-declarations -Wredundant-decls -Wno-long-long factor.c  -o factor
+	    ***Command***
+		shm572@tux7:~/lab11/factor> ./factor 987654321
+	    ***Output***
+		987654321 = 3^2 17^2 379721
+            ***Command***
+		shm572@tux7:~/lab11/factor> ./factor 2        
+	    ***Output***
+		2 = 2
+	    ***Command***
+		shm572@tux7:~/lab11/factor> ./factor 100-105
+	    ***Output***
+		100 = 2^2 5^2
+		101 = 101
+		102 = 2 3 17
+		103 = 103
+		104 = 2^3 13
+		105 = 3 5 7
+
+Question. 3 (a)
+
+	  ***Command***
+		shm572@tux7:~> NSID=shm572
+		shm572@tux7:~> SvnURL=https://svn.cs.usask.ca/svn/student/214/$NSID
+		shm572@tux7:~> export EDITOR=vi
+		shm572@tux7:~> svn --username=$NSID info $SvnURL
+	  ***Output***
+		Path: shm572
+		URL: https://svn.cs.usask.ca/svn/student/214/shm572
+		Relative URL: ^/
+		Repository Root: https://svn.cs.usask.ca/svn/student/214/shm572
+		Repository UUID: 4dd1b15c-bbc5-4d93-a643-a0299e13fc53
+		Revision: 21
+		Node Kind: directory
+		Last Changed Author: shm572@USASK.CA
+		Last Changed Rev: 21
+		Last Changed Date: 2018-12-01 16:23:08 -0600 (Sat, 01 Dec 2018)
+
+Question. 3 (b)
+       i)***Command***
+		shm572@tux7:~> Lab11=$SvnURL/Lab11
+		shm572@tux7:~> svn mkdir $Lab11 -m "creating lab11"
+	 ***Output***
+		Committing transaction...
+		Committed revision 27.
+     ii) ***Command***
+		shm572@tux7:~> Svntag=$Lab11/tags
+		shm572@tux7:~> svn mkdir $Svntag -m "creating lab11 sub-dir tags"
+         ***Output***	
+		Committing transaction...
+		Committed revision 28.
+    iii) ***Command***		
+		shm572@tux7:~> Svntrunk=$Lab11/trunk
+		shm572@tux7:~> svn mkdir $Svntrunk -m "creating lab11 sub-dir trunk"
+	 ***Output***	
+  		Committing transaction...
+		Committed revision 29.
+     iv) ***Command***	
+		shm572@tux7:~> Svnbranches=$Lab11/branches
+		shm572@tux7:~> svn mkdir $Svnbranches -m "creating lab11 sub-dir Branches"
+	 ***Output***			
+		Committing transaction...
+		Committed revision 30.
+
+Question. 3 (c)
+          ***Command***
+		shm572@tux7:~> svn list -R $Lab11
+	  ***Output***	
+		branches/
+		tags/
+		trunk/
+Question. 3 (d)
+          ***Command***	
+		shm572@tux7:~> Wrk=`pwd`/workdir
+		shm572@tux7:~> if [ ! -d $Wrk ] ; then mkdir $Wrk ; fi
+		shm572@tux7:~> pushd $Wrk
+	  ***Output***	
+		~/workdir ~ ~
+	  ***Command***		
+		shm572@tux7:~/workdir> svn checkout $Svntrunk 
+	  ***Output***		
+		Checked out revision 30.
+Question. 3 (e)
+          ***Command***	  	
+		shm572@tux7:~/workdir> cd trunk/
+		shm572@tux7:~/workdir/trunk> ls 
+	  ***Output***	
+		shm572@tux7:~/workdir/trunk>		
+	  ***Command***	  	
+		shm572@tux7:~/workdir/trunk> echo "This is file 1">file1.txt
+Question. 3 (f)
+          ***Command***	  	  
+		shm572@tux7:~/workdir/trunk> svn add file1.txt 
+	  ***Output***	
+		A         file1.txt
+          ***Command***	 
+		shm572@tux7:~/workdir/trunk> ls 
+	  ***Output***		
+          	file1.txt
+	  ***Command***	
+ 		shm572@tux7:~/workdir/trunk> svn list -R $Lab11   
+	  ***Output***		
+		branches/
+		tags/
+		trunk/
+Question. 3 (g)
+          ***Command***	 		
+		shm572@tux7:~/workdir/trunk> svn commit file1.txt -m "file1.txt committed"
+	  ***Output***		
+		Adding         file1.txt
+		Transmitting file data .done
+		Committing transaction...
+		Committed revision 31.
+	  ***Command***	
+		shm572@tux7:~/workdir/trunk> svn list -R $Lab11
+	  ***Output***		
+		branches/
+		tags/
+		trunk/
+		trunk/file1.txt
+		shm572@tux7:~/workdir/trunk> 
+Question. 3 (h)
+          ***Command***	
+		shm572@tux7:~/workdir/trunk> svn status -v 
+          ***Output***	     
+	        30       29 shm572@USASK.CA .
+                31       31 shm572@USASK.CA file1.txt
+	  ***Command***	
+		shm572@tux7:~/workdir/trunk> echo “This is file 2”>file2.txt
+Question. 3 (i)
+          ***Command***	
+		shm572@tux7:~/workdir/trunk> svn status -v 
+				30       29 shm572@USASK.CA .
+				31       31 shm572@USASK.CA file1.txt
+		?                                        file2.txt
+          Comments : The difference is that in the just above status the 
+		    file2.txt is shown as that is not a part of repository by "?".
+Question. 3 (j)
+          ***Command***	
+		shm572@tux7:~/workdir/trunk> svn add file2.txt 
+	  ***Output***	
+		A         file2.txt
+	  ***Command***			
+		shm572@tux7:~/workdir/trunk> svn status -v 
+	  ***Output***		
+				30       29 shm572@USASK.CA .
+				31       31 shm572@USASK.CA file1.txt
+		A                -       ?   ?           file2.txt
+           Comments : the file2.txt is the part of working directory as per symbol A but that has not been commited on the repository so it does not have a revison no.
+Question. 3 (k)
+	  ***Command***	
+		shm572@tux7:~/workdir/trunk> svn commit file2.txt -m "file2.txt commited"
+	  ***Output***	
+		Adding         file2.txt
+		Transmitting file data .
+		Committing transaction...
+		Committed revision 32.
+	  ***Command***		
+		shm572@tux7:~/workdir/trunk> svn status -v 
+	  ***Output***			
+		30       29 shm572@USASK.CA .
+		31       31 shm572@USASK.CA file1.txt
+		32       32 shm572@USASK.CA file2.txt
+	   Comments: the file2.txt is commited to the repository now and has a revison no 
+Question. 3 (l)
+	  ***Command***	
+		shm572@tux7:~/workdir/trunk> echo  “This is the second line of file 1” >>file1.txt
+		shm572@tux7:~/workdir/trunk> svn status -v 
+	  ***Output***		
+				30       29 shm572@USASK.CA .
+		M               31       31 shm572@USASK.CA file1.txt
+				32       32 shm572@USASK.CA file2.txt
+	  Comment : M shows that the file1.txt has been modified in the working dir  
+Question. 3 (m)
+	  ***Command***	
+		shm572@tux7:~/workdir/trunk> svn update
+	  ***Output***
+		Updating '.':
+		At revision 32.
+	  ***Command***			
+		shm572@tux7:~/workdir/trunk> svn commit file1.txt -m "add second line to file1.txt"
+	  ***Output***		
+		Sending        file1.txt
+		Transmitting file data .done
+		Committing transaction...
+		Committed revision 33.
+Question. 3 (n)
+	  ***Command***			
+		shm572@tux7:~/workdir/trunk> svn log -v file1.txt
+          ***Output***		
+		------------------------------------------------------------------------
+		r33 | shm572@USASK.CA | 2018-12-02 14:53:04 -0600 (Sun, 02 Dec 2018) | 2 lines
+		Changed paths:
+		   M /Lab11/trunk/file1.txt
+
+		add second line to file1.txt
+
+		------------------------------------------------------------------------
+		r31 | shm572@USASK.CA | 2018-12-02 14:28:17 -0600 (Sun, 02 Dec 2018) | 2 lines
+		Changed paths:
+		   A /Lab11/trunk/file1.txt
+
+		file1.txt commited 
+
+		------------------------------------------------------------------------
+		
+Question. 3 (o)
+	  ***Command***		
+		shm572@tux7:~/workdir/trunk> svn log -v $Svntrunk
+		------------------------------------------------------------------------
+		r33 | shm572@USASK.CA | 2018-12-02 14:53:04 -0600 (Sun, 02 Dec 2018) | 2 lines
+		Changed paths:
+		   M /Lab11/trunk/file1.txt
+
+		add second line to file1.txt
+
+		------------------------------------------------------------------------
+		r32 | shm572@USASK.CA | 2018-12-02 14:42:48 -0600 (Sun, 02 Dec 2018) | 2 lines
+		Changed paths:
+		   A /Lab11/trunk/file2.txt
+
+		file2.txt commited
+
+		------------------------------------------------------------------------
+		r31 | shm572@USASK.CA | 2018-12-02 14:28:17 -0600 (Sun, 02 Dec 2018) | 2 lines
+		Changed paths:
+		   A /Lab11/trunk/file1.txt
+
+		file1.txt commited 
+
+		------------------------------------------------------------------------
+		r29 | shm572@USASK.CA | 2018-12-02 14:05:44 -0600 (Sun, 02 Dec 2018) | 1 line
+		Changed paths:
+		   A /Lab11/trunk
+
+		creating lab11 sub-dir trunk
+		------------------------------------------------------------------------
+		****Command****
+		shm572@tux7:~/workdir/trunk> popd
+		****Output****
+		~ ~
+		shm572@tux7:~> 
+
+
+
+
